@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
+from django.urls import reverse
 
 STATUS_CHOICE = (
     ('draft', 'Draft'),
@@ -37,5 +38,11 @@ class Cuisine(models.Model):
     
     class Meta:
         ordering = ('-publish',)
+
     def __str__(self):
         return self.name
+
+    def get_absolute_url(self):
+        return reverse("cuisine:Cuisine_detail", 
+                        args=[self.slug]
+                        )
