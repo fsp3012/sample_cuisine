@@ -3,6 +3,7 @@ from .models import Cuisine
 
 class CuisineAdmin(admin.ModelAdmin):
     list_display = ('name', 'author', 'created', 'publish', 'status')
+    list_filter = ('status', 'created', 'publish', 'author')
     search_fields = ('name', 'desc')
     prepopulated_fields = {'slug': ('name',)}
     raw_id_fields = ('author',)
